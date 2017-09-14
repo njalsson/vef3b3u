@@ -12,11 +12,11 @@ console.log('wokrs'); // gleymi alltaf hvernig madur includar js.
 	console.log(range);
 
 
-	let svg = document.getElementsByTagName('object')[0].id
+	let svg = document.getElementById('gnu');
 
-	let tempsize = 12 * range; // 12px to 1200
+	let tempsize = (11 * range) + 100; // 12px to 1200
 	if(!svg.length) { 
 		svg.setAttribute("height", tempsize);
 		svg.setAttribute("width",  tempsize);
 	}
-}),100);
+},100));
