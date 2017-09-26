@@ -3,7 +3,6 @@
 //er med slider sem stjornar staerdinni 
 //todo: rotating slider
 
-console.log('wokrs'); // gleymi alltaf hvernig madur includar js.
 
 (setInterval(function update() {
 	let range  = 0;
