@@ -39,7 +39,133 @@
 
 1.5% Transform (translation, rotation og scale). Komdu með sýnidæmi	með vector/vigri) í	cartesian hnitakerfi(x,y,z)	fyrir:
 
-	a)	translation	:
-		
-	b)	rotation	
-	c)	scale	
+	a)	translation:
+		segjum ad ved erum med vector P(x,y,z), og translated vector P`(x`,y`,z`)
+		T er hversu mikid thu vilt faera vectorinn, 
+		x` = x + Tx;
+		y` = y + Ty;
+		z` = z + Tz;
+
+	b)	rotation:
+		gerum rad fyrir ad ved aetlum ad rotate um z oxulinn. 
+		α = gradur fra x(0,0) -> til p(x,y,z)
+		β = gradur fra x(0,0) -> til p`(x`,y`,z`)
+		x = r*cos(α);
+		y = r*sin(α);
+		thu getur tha fundid x` og z`
+		x` = r*cos(α + β);
+		y` = r*sin(α + β);
+		z` = z;
+
+	c)	scale:
+		segjum ad thu vilt staekka x,y,z um Sx, Sy, Sz tha er
+		x` = Sx * x;
+		y` = Sy * y;
+		z` = Sz * z;
+
+1.5% Fylki (e. matrix).	Sýndu með sýnidæmi hvernig 4x4 fylki vigri/vector er reiknaður með:
+
+	a)	translation	matrix
+
+		var VSHADER_SOURCE =
+			'attribute vec4 a_Position;\n' +
+			'uniform vec4 u_Translation;\n' +
+			'void main() {\n' +
+			'  gl_Position = a_Position + u_Translation;\n' +
+			'}\n';
+		var Tx = 0.5, Ty = 0.5, Tz = 0.0;
+		function main() {
+			var gl = getWebGLContext(canvas);
+			if (!initShaders(gl, VSHADER_SOURCE, FSHADER_SOURCE)) {
+		}
+			var n = initVertexBuffers(gl);
+			var u_Translation = gl.getUniformLocation(gl.program, Translation');
+			gl.uniform4f(u_Translation, Tx, Ty, Tz, 0.0);
+			gl.drawArrays(gl.TRIANGLES, 0, n);
+		}
+		function initVertexBuffers(gl) {
+		   var vertices = new Float32Array([
+		     0.0.0, 0.5,   -0.5, -0.5,   0.5, -0.5
+		   ]);
+		   var n = 3;
+		   return n;
+		}
+
+
+
+	b)	rotation matrix
+
+
+		var VSHADER_SOURCE =
+		    // x' = x cos b - y sin b
+		    // y' = x sin b + y cos b                             
+		    // z' = z
+		    'attribute vec4 a_Position;\n' +
+		    'uniform float u_CosB, u_SinB;\n' +
+		'void main() {\n' +
+		   '  gl_Position.x = a_Position.x * u_CosB - a_Position.y *u_SinB;\n'+
+		  '  gl_Position.y = a_Position.x * u_SinB + a_Position.y * u_CosB;\n'+
+		   '  gl_Position.z = a_Position.z;\n' +
+		   '  gl_Position.w = 1.0;\n' +
+		   '}\n';
+
+
+	    var ANGLE = 90.0;
+
+	    function main() {
+	    	var n = initVertexBuffers(gl);
+	    	var radian = Math.PI * ANGLE / 180.0; // Convert to radians
+	    	var cosB = Math.cos(radian);
+	    	var sinB = Math.sin(radian);
+
+	    	var u_CosB = gl.getUniformLocation(gl.program, 'u_CosB');
+	    	var u_SinB = gl.getUniformLocation(gl.program, 'u_SinB');
+		    gl.uniform1f(u_CosB, cosB);
+		    gl.uniform1f(u_SinB, sinB);
+
+	        gl.drawArrays(gl.TRIANGLES, 0, n);
+	   }
+
+	   function initVertexBuffers(gl) {
+	      var vertices = new Float32Array([
+	        0.0, 0.5,  -0.5, -0.5,  0.5, -0.5
+	      ]);
+	      var n = 3; 
+	      return n;
+	   }
+
+
+
+	c)	scale matrix
+
+
+
+
+		var VSHADER_SOURCE =
+			'attribute vec4 a_Position;\n' +
+			'uniform mat4 u_xformMatrix;\n' +
+			'void main() {\n' +
+			'  gl_Position = u_xformMatrix * a_Position;\n' +
+			'}\n';
+		var ANGLE = 90.0;
+		function main() {
+		  	var n = initVertexBuffers(gl);
+			  	var radian = Math.PI * ANGLE / 180.0; // Convert to radians
+			  	var cosB = Math.cos(radian), sinB = Math.sin(radian);
+			  	var xformMatrix = new Float32Array([
+			    	cosB, sinB, 0.0, 0.0,
+			    	-sinB, cosB, 0.0, 0.0,
+			    	0.0, 0.0, 1.0, 0.0,
+			    	0.0, 0.0, 0.0, 1.0
+		 	]);
+		    var u_xformMatrix = gl.getUniformLocation(gl.program, 		formMatrix');
+		    gl.uniformMatrix4fv(u_xformMatrix, false, xformMatrix);
+		    gl.drawArrays(gl.TRIANGLES, 0, n);
+		}
+		function initVertexBuffers(gl) {
+		    var vertices = new Float32Array([
+		    	0.0, 0.5, -0.5, -0.5, 0.5, -0.5
+		    ]);
+		    var n = 3; 
+		    return n;
+		}
