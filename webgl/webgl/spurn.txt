@@ -169,3 +169,7 @@
 		    var n = 3; 
 		    return n;
 		}
+
+
+		5% fekk ekkert til ad virka i localhost, eftir ad copia linu fyrir linu, sleppi bara.
+		
