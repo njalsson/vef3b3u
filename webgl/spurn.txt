@@ -1,3 +1,45 @@
+//nota ekki isl layout, heldur dvorak thannig and eg mun ekki nota isl stafi, thu tharft ad lifa thetta af.
+
 5%
 	1. webgl:
+		webgl er low level framework til ad gera animations og slikt i javascript.
+	2.gpu:
+		stendur fyrir graphical processing unit. notad til ad rendera hluti. hefur marga cuda kjarna sem eru ekki jafn oflugir og cpu kjarnar, en nutima gpu(t.d. nvidia 1070) hefur 1920 cuda kjarna thannig ef ad forrit getur notad tha alla getur thad verid thusund sinnum fljotara en ad nota cpu.
+	3.rasterizing:
+		er ad taka vector mynd og breyta henni i punkta, eda pixla.
+	4.GLSL:
+		shading tungumal i openGL.
+	5.vertex:
+		oft kallad spjot a islensku, er punktur i hnitakerfi sem bendir a annann punkt.
+	6.Primative:
+		eru annad hvort linur, punktar eda thrihyrningar.
+	7.Fragment:
+		fragment shader ser til thess ad pixli faer lit
+	8.Pixel:
+		er einn punktur a skja.
+	9.Clip space:
+		thegar thad er renderad vertex, er annad hnitakerfi, Clip space. Thad sem er fyrir utan Clip space er ekki rendarad.
+	10.View	frustum:
+		sjonarhorn myndavelar.
+	11.Z-buffering:
+		thegar thad er renderad, er geimt z axelinn. hann er fyrir haedinna, dypt.
+	12.Right-hand coordinate system (RHS):
+		ef madur heldur hondinni uppi med thumallinn(z) upp, visi(x) og midjuputtann(y) med 90 gradu bil a milli. oft notad i rafmagnsfraedi thegar thad kemur ad solenoidum.
+
+0.5% Afhverju eru 3D objectar búnir	til	útfrá samsettum	þríhyrningum í 3D grafík?
+	thad er notad marga polygona(oftast thrihyrningar), sem eru samsettir i "mesh", thvi fleirri poly, yfirbordsvaedid lytur ut fyrir ad vera ekki flatt.
+	i odru lagi, eru gpu mjog godir i ad rendera polygona, og geta renderad millionir a sekondu.
+
+1.5% Útskýrðu ítarlega og tæknilega	(en	án kóða) með eigin orðum ásmt skýringamyndum hvernig rendering pipeline virkar í WebGL.
+	
+	javascript setur hluti upp med ad setja upp webgl, bua til array, buffera objecta, compila og linka shadera, bua til attributes, bua til Transformation matrix.
+
+	sidan Vertex shader -> Primative assembly -> Rasterization -> Pixel shader -> Frame Buffer
+
+
+1.5% Transform (translation, rotation og scale). Komdu með sýnidæmi	með vector/vigri) í	cartesian hnitakerfi(x,y,z)	fyrir:
+
+	a)	translation	:
 		
+	b)	rotation	
+	c)	scale	
