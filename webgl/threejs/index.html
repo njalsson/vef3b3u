@@ -7,6 +7,8 @@
 		</style>
 	</head>
 	<body>
+		<div id="info">Three.js</div>
+
 		<script src="js/three.js"></script>
 		<script>
 			var scene = new THREE.Scene();
@@ -17,7 +19,7 @@
 			document.body.appendChild( renderer.domElement );
 
 			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 			var cube = new THREE.Mesh( geometry, material );
 			scene.add( cube );
 
@@ -26,8 +28,8 @@
 			var animate = function () {
 				requestAnimationFrame( animate );
 
-				cube.rotation.x += 0.1;
-				cube.rotation.y += 0.1;
+				cube.rotation.x += 0.001;
+				cube.rotation.y += 0.01;
 
 				renderer.render(scene, camera);
 			};
