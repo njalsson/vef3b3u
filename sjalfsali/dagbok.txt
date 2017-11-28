@@ -1,0 +1,12 @@
+hugmyndir:
+	verk 4:
+		gera blockchain scraper, sem tekur eftir ef ad hann faer borgun, skiptir kanski mali hversu mikinn pening
+		hann er keyrdur a raspi og er tengdur vid skja, ef hann faer borgun outputtar hann ehv a display.
+
+	verk 5:
+		hann er tengdur vid motora sem ad hann hleypir gos ut ef hann faer penge.
+
+28/11/'17:
+
+	
+	byrja a skraper.
