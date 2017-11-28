@@ -9,4 +9,4 @@ hugmyndir:
 28/11/'17:
 
 	
-	byrja a skraper.
+	byrja a skraper. // skraping er ekki haegt, en heldur er haegt ad fa email notification thegar ad madur faer penge, og tha les python emailid og veit.
