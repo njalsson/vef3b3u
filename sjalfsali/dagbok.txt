@@ -10,3 +10,10 @@ hugmyndir:
 
 	
 	byrja a skraper. // skraping er ekki haegt, en heldur er haegt ad fa email notification thegar ad madur faer penge, og tha les python emailid og veit.
+
+
+30/11/'17:
+	email of slow, en etherscan.io er med api til ad sja incoming transactions.
+
+	ef eg nae ad gera thad mun verk 4 hlutinn virka.
+
