@@ -2,7 +2,6 @@ import json       # to use json
 import requests   # easy library to get data from port 80
 import time       # make it run once a second
 import RPi.GPIO as GPIO
-import motor 
 from time import sleep
 
 
@@ -28,26 +27,42 @@ print json['result'][i-1]['hash']  # get the latest hash of payment, i thing thi
 last = json['result'][i-1]['hash']
 
 while True: # basically run once a second to see if latest hash changed.
-        del r # save precious ram space.
-        del json
-        del i
-        r = requests.get(address) # redownload
-        json = r.json()
-        i = 0
-        for x in json['result']:
-                i += 1
+		del r # save precious ram space.
+		del json
+		del i
+		r = requests.get(address) # redownload
+		json = r.json()
+		i = 0
+		for x in json['result']:
+				i += 1
 
-        lastbutnotleast = json['result'][i-1]['hash']
+		lastbutnotleast = json['result'][i-1]['hash']
 
-        if lastbutnotleast != last:
-                last = lastbutnotleast
-                print 'payment received'
-                motor.start()
-                motor.angle(180)
-                os.sleep(1)
-                motor.angle(90)
-                motor.stop()
-                ## todo run vending machine.
+		if lastbutnotleast != last:
+				last = lastbutnotleast
+				print 'payment received'
+				## todo run vending machine.
+				GPIO.setmode(GPIO.BOARD)
+				GPIO.setup(03,GPIO.OUT)
+				pwm = GPIO.PWM(03, 50)
+				pwm.start(90)
 
+
+				def setangle(angle):
+					duty = angle / 18 + 2
+					GPIO.output(03, True)
+					pwm.ChangeDutyCycle(duty)
+					sleep(1)
+					GPIO.output(03,False)
+					pwm.ChangeDutyCycle(0)
+
+
+				setangle(180)
+				sleep(0.5)
+				setangle(90)
+
+
+                
+	
 
 
