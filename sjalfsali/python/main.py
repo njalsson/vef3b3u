@@ -14,9 +14,35 @@ print(r.status_code)
 
 
 json = r.json()
-print(json)
+
+i = 0
+for x in json['result']:
+	i += 1
+
+print(i)
+print(json['result'][i-1]['hash'])
+
+last = json['result'][i-1]['hash']
+
+while True:
+        del r
+        del json
+        del i
+        r = request.get(address)
+        json = r.json()
+        i = 0
+        for x in json['result']:
+                i += 1
+
+        
+        lastbutnotleast = json['result'][i-1]['hash']
+
+        if lastbutnotleast != last:
+                lastbutnotleast = last
+                print('payment received')
+
+                ## todo run thing
 
 
 
-for x in json['result'][0]:
-	print(x)
+        
