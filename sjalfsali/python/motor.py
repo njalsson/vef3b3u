@@ -1,8 +1,9 @@
-def start():
-	GPIO.setmode(GPIO.BOARD)
-	GPIO.setup(03,GPIO.OUT)
-	pwm = GPIO.PWM(03,50)
-	pwm.start(0)
+from  time import time
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup( 03, GPIO.OUT)
+pwm = GPIO.PWM(03,50)
+pwm.start(0)
 
 
 def SetAngle(angle):

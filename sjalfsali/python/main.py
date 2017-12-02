@@ -2,7 +2,7 @@ import json       # to use json
 import requests   # easy library to get data from port 80
 import time       # make it run once a second
 import RPi.GPIO as GPIO
-import motor.py 
+import motor 
 from time import sleep
 
 
@@ -11,7 +11,7 @@ address = 'http://api.etherscan.io/api?module=account&action=txlist&address=0xe5
 
 r = requests.get(address)
 
-print(r.status_code) # works?
+print r.status_code  # works?
 
 
 
@@ -22,8 +22,8 @@ i = 0 # figure out how many payments there have been made to a specific account.
 for x in json['result']: # i - 1 is the last payment.
 	i += 1
 
-print(i) # debug, todo: remove
-print(json['result'][i-1]['hash']) # get the latest hash of payment, i thing this is unique, what ever
+print i # debug, todo: remove
+print json['result'][i-1]['hash']  # get the latest hash of payment, i thing this is unique, what ever
 
 last = json['result'][i-1]['hash']
 
@@ -41,7 +41,7 @@ while True: # basically run once a second to see if latest hash changed.
 
         if lastbutnotleast != last:
                 last = lastbutnotleast
-                print('payment received')
+                print 'payment received'
                 motor.start()
                 motor.angle(180)
                 os.sleep(1)
