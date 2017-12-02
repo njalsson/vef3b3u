@@ -1,6 +1,9 @@
 import json       # to use json
 import requests   # easy library to get data from port 80
 import time       # make it run once a second
+import RPi.GPIO as GPIO
+import motor.py 
+from time import sleep
 
 
 #my ethereum wallet
@@ -28,7 +31,7 @@ while True: # basically run once a second to see if latest hash changed.
         del r # save precious ram space.
         del json
         del i
-        r = request.get(address) # redownload
+        r = requests.get(address) # redownload
         json = r.json()
         i = 0
         for x in json['result']:
@@ -37,9 +40,13 @@ while True: # basically run once a second to see if latest hash changed.
         lastbutnotleast = json['result'][i-1]['hash']
 
         if lastbutnotleast != last:
-                lastbutnotleast = last
+                last = lastbutnotleast
                 print('payment received')
-
+                motor.start()
+                motor.angle(180)
+                os.sleep(1)
+                motor.angle(90)
+                motor.stop()
                 ## todo run vending machine.
 
 
