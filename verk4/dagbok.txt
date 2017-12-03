@@ -1,0 +1,5 @@
+3/12/'17
+
+  Buinn med Sjalfsalann, verk nr 4 tekur lika ethereum, en i stadinn fyrir ad gefa gos gefur hros.
+  nota gui framework sem heitir tkinter.
+
