@@ -17,3 +17,19 @@ hugmyndir:
 
 	ef eg nae ad gera thad mun verk 4 hlutinn virka.
 
+31/11/'17
+
+	etherscan api svarar med api, tok mig sma tima til ad fa python til ad lesa hann rett.
+
+	byrja ad nota motorinn fyrir sjalfsalann.
+
+
+1/12/'17
+
+	motorinn virkar. 
+
+2/12/'17
+
+	keypti kassa af ice tea, thegar ad hann var i halla og motorinn aetladi ad hleypa einum i gegn, gat hann ekki farid nogu hratt upp og thad tharf 2 motora, sem betur fer er eg med 2.
+
+	python vill ekki keyra 2 motora heldur bara einn.
