@@ -55,7 +55,7 @@ logo = logo = tk.PhotoImage(file="../images/ethereum.png")
 
 w1 = tk.Label(root, image=logo).pack(side="right")
 
-nr1 = "last payment was from {}".format(last)
+nr1 = "new payment was from {}".format(json['result'][i-1]['from'])
 
 ## getting a random compliment from array
 nr2 = compliments[random.randint(0,len(compliments)-1)]
@@ -63,12 +63,15 @@ w1 = tk.Label(root,
               justify=tk.LEFT,
               padx = 0, 
               text=nr1,
-              font = "Helvetica 12 bold italic").pack(side="top")
+              font = "Helvetica 12 bold italic")
+
+w1.pack(side="top")
 w2 = tk.Label(root, 
               justify=tk.LEFT,
               padx = 10, 
               text=nr2,
-              font = "Helvetica 16 bold italic").pack(side="bottom")
+              font = "Helvetica 16 bold italic")
+w2.pack(side="bottom")
 
 
 
@@ -101,5 +104,17 @@ while True: # basically run once a second to see if latest hash changed.
 				# put the transaction account and the amount in ethereum and in usd to the tkinter program
 				newcomliment = compliments[random.randint(0,len(compliments)-1)]
 				newtextnr1 = "new payment from {}: ".format(last)
-				w1.config(text=newtextnr1)
-				w2.config(text=newcomliment)
+				w1.destroy()
+				w2.destroy()	
+				w1 = tk.Label(root, 
+								justify=tk.LEFT,
+								padx = 0, 
+								text=nr1,
+								font = "Helvetica 12 bold italic").pack(side="top")
+				w2 = tk.Label(root, 
+								justify=tk.LEFT,
+								padx = 10, 
+								text=nr2,
+								font = "Helvetica 16 bold italic").pack(side="bottom")
+
+

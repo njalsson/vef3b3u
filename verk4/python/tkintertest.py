@@ -1,5 +1,5 @@
 import tkinter as tk
-
+import time
 root = tk.Tk()
 
 
@@ -26,7 +26,7 @@ w2 = tk.Label(root,
               text=nr2,
               font = "Helvetica 16 bold italic").pack(side="left")
 
+while True:
+	root.update()
 
-
-root.mainloop()
 
